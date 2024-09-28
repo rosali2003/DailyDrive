@@ -1,9 +1,14 @@
 from openai import OpenAI
 
+def getKey() :
+    with open('api_key.txt') as f:
+        # Read the contents of the file into a variable
+        return f.read()
+
 # gets API Key from environment variable OPENAI_API_KEY
 client = OpenAI(
   base_url="https://openrouter.ai/api/v1",
-  api_key="YOUR_KEY",  # replace with your API key
+  api_key = getKey(),  # replace with your API key
 )
 
 completion = client.chat.completions.create(
