@@ -1,11 +1,10 @@
-
 import { useState } from "react";
-// import { useRouter } from 'next/navigation'
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Checkbox } from "./ui/checkbox";
 import { PlusIcon, TrashIcon } from "lucide-react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const serverUrl = process.env.REACT_APP_SERVER_URL || "http://127.0.0.1:8000";
 
@@ -20,6 +19,7 @@ interface Habit {
 }
 
 export const HabitForm = () => {
+  const navigate = useNavigate();
   const [habits, setHabits] = useState<Habit[]>([
     {
       id: 0, // Set the initial ID to 0
@@ -31,23 +31,6 @@ export const HabitForm = () => {
       unit: "day",
     },
   ]);
-
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Input } from './ui/input';
-import { Button } from './ui/button';
-import { Checkbox } from './ui/checkbox';
-
-// Define the Habit type
-type Habit = {
-  id: number;
-  description: string;
-};
-
-export default function HabitForm() {
-  const [habits, setHabits] = useState<Habit[]>([{ id: 1, description: '' }]);
-  const navigate = useNavigate();
-
 
   // Add a new habit with default values and a unique ID
   const addHabit = () => {
@@ -63,14 +46,10 @@ export default function HabitForm() {
         unit: "day",
       },
     ]);
-
-    setHabits([...habits, { id: habits.length + 1, description: '' }]);
-
   };
 
   // Remove habit by ID
   const removeHabit = (id: number) => {
-
     setHabits(habits.filter((habit) => habit.id !== id));
   };
 
@@ -81,21 +60,12 @@ export default function HabitForm() {
         habit.id === id ? { ...habit, [field]: value } : habit
       )
     );
-
-    setHabits(habits.filter(habit => habit.id !== id));
-  };
-
-  const updateHabit = (id: number, description: string) => {
-    setHabits(habits.map(habit => habit.id === id ? { ...habit, description } : habit));
-
   };
 
   // Submit handler for form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     console.log("Saving habits:", habits);
-    // Handle redirection or further action after saving
   };
 
   // Send habits data to the server
@@ -108,11 +78,8 @@ export default function HabitForm() {
       console.error("There was an error creating the habit", error);
     }
 
-    // In a real app, you would save the habits to your backend here
-    console.log('Saving habits:', habits);
-    // Redirect to the dashboard
+    // Redirect to the dashboard after submission
     navigate('/');
-
   };
 
   return (
@@ -158,7 +125,6 @@ export default function HabitForm() {
             type="number"
             required
           />
-
           <Button
             type="button"
             variant="ghost"
@@ -175,21 +141,10 @@ export default function HabitForm() {
         className="w-full"
       >
         <PlusIcon className="h-5 w-5 mr-2" /> Add Another Habit
-
-          <Button type="button" variant="ghost" onClick={() => removeHabit(habit.id)}>
-          </Button>
-        </div>
-      ))}
-      <Button type="button" onClick={addHabit} variant="outline" className="w-full">
-
       </Button>
       <Button onClick={onSend} type="submit" className="w-full">
         Finish Setup
       </Button>
     </form>
   );
-
 };
-
-}
-

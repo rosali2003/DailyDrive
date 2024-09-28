@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import EmailForm from './components/EmailForm';
 import GoalForm from './components/GoalForm';
-import HabitForm from './components/HabitForm';
+import {HabitForm} from './components/HabitForm';
 import './App.css';
 import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './components/ui/card'; 
 import { Button } from './components/ui/button';

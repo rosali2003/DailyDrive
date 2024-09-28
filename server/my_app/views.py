@@ -21,4 +21,8 @@ class HabitsViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def perform_create(self, serializer):
+<<<<<<< HEAD
         serializer.save()
+=======
+        serializer.save()
+>>>>>>> 0f8fd63 (django set up complete and bulk add habits)
