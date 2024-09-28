@@ -9,9 +9,9 @@ export default function EmailForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, you would save the email to your backend here
+    // save the email to your backend ?
     console.log('Saving email:', email);
-    // Redirect to the goals page
+    // redirect to goals page
     navigate('/goal');
   };
 
