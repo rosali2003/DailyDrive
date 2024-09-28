@@ -1,19 +1,19 @@
-import { useState } from 'react'
-// import { useRouter } from 'next/navigation'
-import { Input } from './ui/input'
-import { Button } from './ui/button'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Input } from './ui/input';
+import { Button } from './ui/button';
 
 export default function EmailForm() {
-  const [email, setEmail] = useState('')
-  // const router = useRouter()
+  const [email, setEmail] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // In a real app, you would save the email to your backend here
-    console.log('Saving email:', email)
+    console.log('Saving email:', email);
     // Redirect to the goals page
-    // router.push('/goals')
-  }
+    navigate('/goal');
+  };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
@@ -24,9 +24,7 @@ export default function EmailForm() {
         onChange={(e) => setEmail(e.target.value)}
         required
       />
-      <Button type="submit" className="w-full">
-        Get Started
-      </Button>
+      <Button type="submit">Submit</Button>
     </form>
-  )
+  );
 }
