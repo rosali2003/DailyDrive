@@ -23,7 +23,7 @@ function App() {
               <Link to="/habit">Habit Form</Link>
             </nav>
           </header>
-          <main>
+          <main className="App-main">
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/email" element={<EmailForm />} />
