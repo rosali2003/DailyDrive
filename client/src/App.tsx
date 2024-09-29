@@ -14,7 +14,7 @@ import { Checkbox } from './components/ui/checkbox';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App h-full bg-color">
       <Router>
         <div className="App">
           <header className="App-header">

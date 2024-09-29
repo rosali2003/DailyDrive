@@ -16,8 +16,11 @@ class User(models.Model):
 
 class Goals(models.Model):
     title = models.TextField()
-    completion_date = models.DateTimeField(null=True, blank=True) 
+    completion_date = models.DateTimeField(null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.title} ({self.user.first_name} {self.user.last_name})"
 
 class Habits(models.Model):
     title = models.TextField()
@@ -26,4 +29,4 @@ class Habits(models.Model):
     frequency = models.PositiveIntegerField(default=1)  # How many times the habit is repeated in the interval
     interval = models.PositiveIntegerField(default=1)  # Interval between repetitions
     unit = models.CharField(max_length=10, choices=TIME_UNITS, default='day')  # Time unit for the interval
-    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
