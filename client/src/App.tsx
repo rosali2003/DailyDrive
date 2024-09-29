@@ -6,6 +6,8 @@ import Dashboard from './components/Dashboard';
 import EmailForm from './components/EmailForm';
 import GoalForm from './components/GoalForm';
 import { HabitForm } from './components/HabitForm';
+import ReflectionForm from './components/Reflection'
+
 import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './components/ui/card'; 
 import { Button, buttonVariants } from './components/ui/button';
 import { Input } from './components/ui/input';
@@ -31,6 +33,7 @@ function App() {
               <Route path="/email" element={<EmailForm />} />
               <Route path="/goal" element={<GoalForm />} />
               <Route path="/habit" element={<HabitForm />} />
+              <Route path="/reflection" element={<ReflectionForm/>} />
             </Routes>
             {/* Example usage of imported UI components */}
             <div className="ui-components">

@@ -13,6 +13,11 @@ class HabitsSerializer(serializers.ModelSerializer):
         fields = '__all__'
         list_serializer_class = HabitListSerializer
 
+class InputDataSerializer(serializers.Serializer):
+    reflection = serializers.CharField(max_length=1000)
+    streak = serializers.IntegerField(max_value=100, min_value=-100)
+    goal = serializers.CharField(max_length=200)
+    habits = serializers.ListField(child=serializers.CharField(max_length=1000))
 
 class UserCreationSerializer(serializers.ModelSerializer):
     class Meta:
