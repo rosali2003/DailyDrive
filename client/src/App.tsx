@@ -4,6 +4,7 @@ import EmailForm from './components/EmailForm';
 import GoalForm from './components/GoalForm';
 import { HabitForm } from './components/HabitForm';
 import ReflectionForm from './components/ReflectionForm';
+import DataVisualization from './components/DataVisualization';
 import './App.css';
 import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './components/ui/card'; 
 import { Button } from './components/ui/button';
@@ -24,6 +25,7 @@ function App() {
             <Link to="/goal">Goal Form</Link>
             <Link to="/habit">Habit Form</Link>
             <Link to="/reflection">Reflection</Link>
+            <Link to="/data">Data Visualization</Link>
           </nav>
         </header>
         <main className="App-main">
@@ -34,6 +36,8 @@ function App() {
               <Route path="/goal" element={<GoalForm />} />
               <Route path="/habit" element={<HabitForm />} />
               <Route path="/reflection" element={<ReflectionForm />} />
+              <Route path="/data" element={<DataVisualization />} />
+              <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
           </div>
         </main>

@@ -2,16 +2,20 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Checkbox } from './ui/checkbox';
+import { useNavigate } from 'react-router-dom';
 
 const ReflectionForm: React.FC = () => {
   const [completedHabits, setCompletedHabits] = useState<boolean | null>(null);
   const [reflection, setReflection] = useState<string>('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission, e.g., save to backend
     console.log('Completed Habits:', completedHabits);
     console.log('Reflection:', reflection);
+    // Redirect to the dashboard page
+    navigate('/dashboard');
   };
 
   return (
