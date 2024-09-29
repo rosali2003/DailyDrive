@@ -5,7 +5,7 @@ from sendgrid.helpers.mail import Mail
 from .reflectionAI import getMessage
 
 def getKey() :
-    with open('../../email_key.txt') as f:
+    with open('../email_key.txt') as f:
         # Read the contents of the file into a variable
         return f.read()
 

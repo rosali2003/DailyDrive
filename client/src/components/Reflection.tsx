@@ -12,13 +12,11 @@ export default function ReflectionForm() {
   const callDjangoFunction = async () => {
         try {
             const res = await axios.post('http://localhost:8000/api/emailReminder/', {
-                input: {
-                    'reflection': reflection,
-                    'streak': -1,
-                    'goal': 'Finding a job within 3 months',
-                    'habits': ['Apply to 5 jobs a day', 'Research companies for 30 minutes a day', 
-                            'Spend 30 minutes a day fixing resumes, cover letters, etc.']
-                },
+            'reflection': reflection,
+            'streak': -1,
+            'goal': 'Finding a job within 3 months',
+            'habits': ['Apply to 5 jobs a day', 'Research companies for 30 minutes a day', 
+                    'Spend 30 minutes a day fixing resumes, cover letters, etc.']
             });
         } catch (error) {
             console.error('Error calling the API', error);

@@ -3,10 +3,5 @@ from rest_framework.routers import DefaultRouter
 from .views import HabitsViewSet, EmailReminderView
 
 router = DefaultRouter()
-router.register(r'habits', HabitsViewSet, basename="habit")
-# router.register('emailReminder', EmailReminderView.as_view())
-
-urlpatterns = [
-    path(r'emailReminder', EmailReminderView.as_view()),
-]
-urlpatterns = router.urls
+router.register('habits', HabitsViewSet, basename='habits')
+urlpatterns = [path('emailReminder/', EmailReminderView.as_view())] + router.urls

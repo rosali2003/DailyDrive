@@ -15,6 +15,6 @@ class HabitsSerializer(serializers.ModelSerializer):
 
 class InputDataSerializer(serializers.Serializer):
     reflection = serializers.CharField(max_length=1000)
-    streak = serializers.IntegerField
+    streak = serializers.IntegerField(max_value=100, min_value=-100)
     goal = serializers.CharField(max_length=200)
-    habits = serializers.ListField
+    habits = serializers.ListField(child=serializers.CharField(max_length=1000))
