@@ -5,7 +5,7 @@ import GoalForm from './components/GoalForm';
 import { HabitForm } from './components/HabitForm';
 import './App.css';
 import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './components/ui/card'; 
-import { Button } from './components/ui/button';
+import { Button, buttonVariants } from './components/ui/button';
 import { Input } from './components/ui/input';
 import { Progress } from './components/ui/progress';
 import { Checkbox } from './components/ui/checkbox';
@@ -14,16 +14,16 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <header className="App-header">
-          <nav className="navbar">
-            <Link to="/">Dashboard</Link>
-            <Link to="/email">Email Form</Link>
-            <Link to="/goal">Goal Form</Link>
-            <Link to="/habit">Habit Form</Link>
-          </nav>
-        </header>
-        <main className="App-main">
-          <div className="container">
+        <div className="App">
+          <header className="App-header">
+            <nav className="navbar">
+              <Link to="/">Dashboard</Link>
+              <Link to="/email">Email Form</Link>
+              <Link to="/goal">Goal Form</Link>
+              <Link to="/habit">Habit Form</Link>
+            </nav>
+          </header>
+          <main className="App-main">
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/email" element={<EmailForm />} />
@@ -32,7 +32,7 @@ function App() {
             </Routes>
             {/* Example usage of imported UI components */}
             <div className="ui-components">
-              <Card className="max-w-md mx-auto">
+              <Card>
                 <CardHeader>
                   <CardTitle>Card Title</CardTitle>
                   <CardDescription>Card Description</CardDescription>
@@ -48,8 +48,8 @@ function App() {
                 </CardFooter>
               </Card>
             </div>
-          </div>
-        </main>
+          </main>
+        </div>
       </Router>
     </div>
   );

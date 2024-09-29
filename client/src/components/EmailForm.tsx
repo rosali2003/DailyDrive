@@ -16,7 +16,7 @@ export default function EmailForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+    <form onSubmit={handleSubmit} className="space-y-4">
       <Input
         type="email"
         placeholder="Enter your email"
@@ -24,7 +24,7 @@ export default function EmailForm() {
         onChange={(e) => setEmail(e.target.value)}
         required
       />
-      <Button type="submit" className="w-full">Submit</Button>
+      <Button type="submit">Submit</Button>
     </form>
   );
 }

@@ -42,7 +42,7 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-6">
-      <Card className="max-w-md mx-auto">
+      <Card>
         <CardHeader>
           <CardTitle>Your Goals</CardTitle>
         </CardHeader>
@@ -62,7 +62,7 @@ export default function Dashboard() {
         </CardContent>
       </Card>
 
-      <Card className="max-w-md mx-auto">
+      <Card>
         <CardHeader>
           <CardTitle>Today's Habits</CardTitle>
         </CardHeader>
@@ -80,7 +80,7 @@ export default function Dashboard() {
         </CardContent>
       </Card>
 
-      <Card className="max-w-md mx-auto">
+      <Card>
         <CardHeader>
           <CardTitle>Daily Reflection</CardTitle>
         </CardHeader>
