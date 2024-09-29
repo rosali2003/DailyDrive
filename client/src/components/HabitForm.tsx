@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Checkbox } from "./ui/checkbox";
 import { PlusIcon, TrashIcon } from "lucide-react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL || "http://127.0.0.1:8000";
 
@@ -16,6 +16,8 @@ interface Habit {
   frequency: number;
   interval: number;
   unit: string;
+  user: number | null;
+  goal: number | null;
 }
 
 export const HabitForm = () => {
@@ -29,8 +31,26 @@ export const HabitForm = () => {
       frequency: 1,
       interval: 1,
       unit: "day",
+      user: 0,
+      goal: 0,
     },
   ]);
+  const [selectedUser, setSelectedUser] = useState<number | null>(null);
+  const [selectedGoal, setSelectedGoal] = useState<number | null>(null);
+  const [users, setUsers] = useState<any[]>([]);
+  const [goals, setGoals] = useState<any[]>([]);
+
+  useEffect(() => {
+    axios.get(`${process.env.SERVER_URL}/api/users/`).then((response) => {
+      setUsers(response.data);
+      setSelectedUser(response.data[0].id);
+    });
+
+    axios.get(`${process.env.SERVER_URL}/api/goals/`).then((response) => {
+      setGoals(response.data);
+      setSelectedGoal(response.data[0].id);
+    });
+  }, []);
 
   // Add a new habit with default values and a unique ID
   const addHabit = () => {
@@ -44,6 +64,8 @@ export const HabitForm = () => {
         frequency: 1,
         interval: 1,
         unit: "day",
+        user: selectedUser,
+        goal: selectedGoal,
       },
     ]);
   };
@@ -54,7 +76,11 @@ export const HabitForm = () => {
   };
 
   // Generalized update function for any field
-  const updateHabit = (id: number, field: keyof Habit, value: string | number) => {
+  const updateHabit = (
+    id: number,
+    field: keyof Habit,
+    value: string | number
+  ) => {
     setHabits(
       habits.map((habit) =>
         habit.id === id ? { ...habit, [field]: value } : habit
@@ -71,15 +97,34 @@ export const HabitForm = () => {
   // Send habits data to the server
   const onSend = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (selectedUser === null) {
+      alert('Please select a user');
+      return;
+    }
+    if (selectedGoal === null) {
+      alert('Please select a goal');
+      return;
+    }
     try {
-      const response = await axios.post(`${serverUrl}/api/habits/`, habits);
-      console.log("Habits successfully sent", response.data);
+      console.log('habit', habits);
+      for (const habit of habits ) {
+        axios.post(`${serverUrl}/api/habits/`, {
+          title: habit.title,
+          description: habit.description,
+          recurrence: habit.recurrence,
+          frequency: habit.frequency,
+          unit: habit.unit,
+          user: selectedUser,
+          goal: selectedGoal
+        }, { headers: { 'Content-Type': 'application/json' } });
+      }
+      console.log("Habits created successfully");
     } catch (error) {
       console.error("There was an error creating the habit", error);
     }
 
     // Redirect to the dashboard after submission
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -131,6 +176,7 @@ export const HabitForm = () => {
             type="number"
             required
           />
+
           <Button
             type="button"
             variant="ghost"

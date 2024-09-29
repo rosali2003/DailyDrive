@@ -1,3 +1,6 @@
+
+import React from 'react';
+import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import EmailForm from './components/EmailForm';
@@ -6,6 +9,9 @@ import { HabitForm } from './components/HabitForm';
 import ReflectionForm from './components/ReflectionForm';
 import DataVisualization from './components/DataVisualization';
 import './App.css';
+=======
+# import ReflectionForm from './components/Reflection'
+
 import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './components/ui/card'; 
 import { Button } from './components/ui/button';
 import { Input } from './components/ui/input';

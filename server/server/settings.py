@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-&nf7)l&c8frm$+m1lr7h^+_bh$^b&!a#=$m&+hc0jt)l6lf-vb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -83,8 +83,8 @@ DATABASES = {
 'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'dailydrive',
-        'USER': 'rosali',
-        'PASSWORD': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'Hk@7889348303',
         'HOST': 'localhost',
         'PORT': '5432',
     }

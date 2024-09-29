@@ -1,36 +1,59 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { PlusIcon, TrashIcon } from 'lucide-react';
+import axios from 'axios';
 
 // Define the Goal type
 type Goal = {
   id: number;
-  description: string;
-  targetDate: string;
+  title: string;
+  completion_date: Date;
 };
 
 export default function GoalForm() {
-  const [goals, setGoals] = useState<Goal[]>([{ id: 1, description: '', targetDate: '' }]);
+  const [goals, setGoals] = useState<Goal[]>([{ id: 1, title: '', completion_date: new Date() }]);
   const navigate = useNavigate();
 
   const addGoal = () => {
-    setGoals([...goals, { id: goals.length + 1, description: '', targetDate: '' }]);
+    setGoals([...goals, { id: goals.length + 1, title: '', completion_date: new Date() }]);
   };
 
   const removeGoal = (id: number) => {
     setGoals(goals.filter(goal => goal.id !== id));
   };
 
-  const updateGoal = (id: number, field: 'description' | 'targetDate', value: string) => {
+  const updateGoal = (id: number, field:  'title' | 'completion_date', value: string) => {
     setGoals(goals.map(goal => goal.id === id ? { ...goal, [field]: value } : goal));
   };
 
+  const [users, setUsers] = useState<any[]>([]);
+  const [selectedUser, setSelectedUser] = useState<number | null>(null);
+
+  useEffect(() => {
+    axios.get(`${process.env.SERVER_URL}/api/users/`)
+      .then((response) => {
+        setUsers(response.data);
+        setSelectedUser(response.data[0].id);
+      });
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (selectedUser === null) {
+      alert('Please select a user');
+      return;
+    }
     // In a real app, you would save the goals to your backend here
     console.log('Saving goals:', goals);
+    for (const goal of goals ) {
+      axios.post(`${process.env.SERVER_URL}/api/goals/`, {
+        title: goal.title,
+        completion_date: `${goal.completion_date.toISOString()}`,
+        user: selectedUser
+      }, { headers: { 'Content-Type': 'application/json' } });
+    }
     // Redirect to the habits page
     navigate('/habit');
   };
@@ -42,16 +65,24 @@ export default function GoalForm() {
           <Input
             className="custom-input"
             placeholder="Enter your goal"
-            value={goal.description}
-            onChange={(e) => updateGoal(goal.id, 'description', e.target.value)}
+            value={goal.title}
+            onChange={(e) => updateGoal(goal.id, 'title', e.target.value)}
             required
           />
           <Input
             type="date"
-            value={goal.targetDate}
-            onChange={(e) => updateGoal(goal.id, 'targetDate', e.target.value)}
+            value={goal.completion_date ? new Date(goal.completion_date).toISOString().substring(0, 10) : ''}
+            onChange={(e) => updateGoal(goal.id, 'completion_date', e.target.value)}
             required
           />
+
+          <select onChange={(x) => {setSelectedUser(Number(x.target.value))}}>
+            {users.map((user) => (
+              <option key={user.id} value={user.id}>
+                {user.first_name} {user.last_name}
+              </option>
+            ))}
+          </select>
           <Button type="button" variant="ghost" onClick={() => removeGoal(goal.id)}>
             <TrashIcon className="h-5 w-5" />
           </Button>
@@ -59,7 +90,6 @@ export default function GoalForm() {
       ))}
       <Button type="button" onClick={addGoal} variant="outline" className="w-full">
         <PlusIcon className="h-5 w-5 mr-2" /> Add Another Goal
-      </Button>
       <Button type="submit" className="w-full">
         Set Daily Habits
       </Button>
