@@ -6,55 +6,47 @@ import Dashboard from './components/Dashboard';
 import EmailForm from './components/EmailForm';
 import GoalForm from './components/GoalForm';
 import { HabitForm } from './components/HabitForm';
-import ReflectionForm from './components/Reflection'
+import ReflectionForm from './components/ReflectionForm';
+import DataVisualization from './components/DataVisualization';
+import './App.css';
+=======
+# import ReflectionForm from './components/Reflection'
 
 import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './components/ui/card'; 
-import { Button, buttonVariants } from './components/ui/button';
+import { Button } from './components/ui/button';
 import { Input } from './components/ui/input';
 import { Progress } from './components/ui/progress';
 import { Checkbox } from './components/ui/checkbox';
+import ThreeDBackground from './components/ThreeDBackground';
 
 function App() {
   return (
-    <div className="App h-full bg-color">
+    <div className="App">
+      <ThreeDBackground />
       <Router>
-        <div className="App">
-          <header className="App-header">
-            <nav className="navbar">
-              <Link to="/">Dashboard</Link>
-              <Link to="/email">Email Form</Link>
-              <Link to="/goal">Goal Form</Link>
-              <Link to="/habit">Habit Form</Link>
-            </nav>
-          </header>
-          <main className="App-main">
+        <header className="App-header">
+          <nav className="navbar">
+            <Link to="/">Dashboard</Link>
+            <Link to="/email">Email Form</Link>
+            <Link to="/goal">Goal Form</Link>
+            <Link to="/habit">Habit Form</Link>
+            <Link to="/reflection">Reflection</Link>
+            <Link to="/data">Data Visualization</Link>
+          </nav>
+        </header>
+        <main className="App-main">
+          <div className="container">
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/email" element={<EmailForm />} />
               <Route path="/goal" element={<GoalForm />} />
               <Route path="/habit" element={<HabitForm />} />
-              <Route path="/reflection" element={<ReflectionForm/>} />
+              <Route path="/reflection" element={<ReflectionForm />} />
+              <Route path="/data" element={<DataVisualization />} />
+              <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
-            {/* Example usage of imported UI components */}
-            <div className="ui-components">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Card Title</CardTitle>
-                  <CardDescription>Card Description</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p>This is the card content.</p>
-                  <Input placeholder="Enter text here" />
-                  <Checkbox id="example-checkbox" />
-                  <Progress value={50} />
-                </CardContent>
-                <CardFooter>
-                  <Button>Submit</Button>
-                </CardFooter>
-              </Card>
-            </div>
-          </main>
-        </div>
+          </div>
+        </main>
       </Router>
     </div>
   );

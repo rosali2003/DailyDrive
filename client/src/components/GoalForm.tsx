@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
+import { PlusIcon, TrashIcon } from 'lucide-react';
 import axios from 'axios';
 
 // Define the Goal type
@@ -54,14 +55,15 @@ export default function GoalForm() {
       }, { headers: { 'Content-Type': 'application/json' } });
     }
     // Redirect to the habits page
-    navigate('/habits');
+    navigate('/habit');
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6 max-w-md mx-auto">
       {goals.map((goal) => (
         <div key={goal.id} className="flex items-center space-x-4">
           <Input
+            className="custom-input"
             placeholder="Enter your goal"
             value={goal.title}
             onChange={(e) => updateGoal(goal.id, 'title', e.target.value)}
@@ -73,6 +75,7 @@ export default function GoalForm() {
             onChange={(e) => updateGoal(goal.id, 'completion_date', e.target.value)}
             required
           />
+
           <select onChange={(x) => {setSelectedUser(Number(x.target.value))}}>
             {users.map((user) => (
               <option key={user.id} value={user.id}>
@@ -80,12 +83,13 @@ export default function GoalForm() {
               </option>
             ))}
           </select>
-          <Button className="dark" type="button" variant="ghost" onClick={() => removeGoal(goal.id)}>
+          <Button type="button" variant="ghost" onClick={() => removeGoal(goal.id)}>
+            <TrashIcon className="h-5 w-5" />
           </Button>
         </div>
       ))}
-      <Button type="button" className="w-full" onClick={addGoal} variant="outline" > Add Goal
-      </Button>
+      <Button type="button" onClick={addGoal} variant="outline" className="w-full">
+        <PlusIcon className="h-5 w-5 mr-2" /> Add Another Goal
       <Button type="submit" className="w-full">
         Set Daily Habits
       </Button>

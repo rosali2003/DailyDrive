@@ -132,82 +132,51 @@ export const HabitForm = () => {
       {habits.map((habit) => (
         <div key={habit.id} className="flex items-center space-x-4">
           <Checkbox id={`habit-${habit.id}`} />
-          <div className="">
-            <div className="flex space-x-4">
-              <Input
-                placeholder="Enter a daily habit title"
-                value={habit.title}
-                onChange={(e) => updateHabit(habit.id, "title", e.target.value)}
-                required
-              />
-              <Input
-                placeholder="Enter a description"
-                value={habit.description}
-                onChange={(e) =>
-                  updateHabit(habit.id, "description", e.target.value)
-                }
-                required
-              />
-            </div>
-            <div className="mt-2 flex space-x-4">
-              <Input
-                placeholder="Enter a recurrence"
-                value={habit.recurrence}
-                onChange={(e) =>
-                  updateHabit(habit.id, "recurrence", e.target.value)
-                }
-                required
-              />
-              <Input
-                placeholder="Enter a frequency"
-                value={habit.frequency}
-                onChange={(e) =>
-                  updateHabit(habit.id, "frequency", Number(e.target.value))
-                }
-                type="number"
-                required
-              />
-              <Input
-                placeholder="Enter a unit"
-                value={habit.unit}
-                onChange={(e) => updateHabit(habit.id, "unit", e.target.value)}
-                required
-              />
-              <Input
-                placeholder="Enter an interval"
-                value={habit.interval}
-                onChange={(e) =>
-                  updateHabit(habit.id, "interval", Number(e.target.value))
-                }
-                type="number"
-                required
-              />
-            </div>
-          </div>
-          <select
-            className="w-[200px]"
-            onChange={(x) => {
-              setSelectedUser(Number(x.target.value));
-            }}
-          >
-            {users.map((user) => (
-              <option key={user.id} value={user.id}>
-                {user.first_name} {user.last_name}
-              </option>
-            ))}
-          </select>
-          <select
-            className="w-[200px]"
-            onChange={(x) => {
-              setSelectedGoal(Number(x.target.value));
-            }}
-          >
-            {goals.map((goal) => (
-              <option key={goal.id} value={goal.id}>
-                {goal.title}
-              </option>
-            ))}
-          </select>
+          <Input
+            className="custom-input"
+            placeholder="Enter a daily habit title"
+            value={habit.title}
+            onChange={(e) => updateHabit(habit.id, 'title', e.target.value)}
+            required
+          />
+          <Input
+            className="custom-input"
+            placeholder="Enter a description"
+            value={habit.description}
+            onChange={(e) => updateHabit(habit.id, 'description', e.target.value)}
+            required
+          />
+          <Input
+            className="custom-input"
+            placeholder="Enter a recurrence"
+            value={habit.recurrence}
+            onChange={(e) => updateHabit(habit.id, 'recurrence', e.target.value)}
+            required
+          />
+          <Input
+            className="custom-input"
+            placeholder="Enter a frequency"
+            value={habit.frequency}
+            onChange={(e) => updateHabit(habit.id, 'frequency', Number(e.target.value))}
+            type="number"
+            required
+          />
+          <Input
+            className="custom-input"
+            placeholder="Enter a unit"
+            value={habit.unit}
+            onChange={(e) => updateHabit(habit.id, 'unit', e.target.value)}
+            required
+          />
+          <Input
+            className="custom-input"
+            placeholder="Enter an interval"
+            value={habit.interval}
+            onChange={(e) => updateHabit(habit.id, 'interval', Number(e.target.value))}
+            type="number"
+            required
+          />
+
           <Button
             type="button"
             variant="ghost"
