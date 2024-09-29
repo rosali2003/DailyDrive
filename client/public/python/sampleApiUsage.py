@@ -22,39 +22,39 @@ def getMessage(contents) :
     model="meta-llama/llama-3.2-11b-vision-instruct:free",
     messages=[
         {
-        "role": "system",
-        "content": [
-            {
-            "type": "text",
-            "text": "You are part of a goal-setting and productiveness app. Users enter a long term goal they are struggling to achieve. \
-                For each goal, they will setup daily/weekly habits they would like to have in order to achieve their goal."    
-            },
-            {
-            "type": "text",
-            "text": "Everyday, users will need to fill out a self-reflection log Your task is to look at this log and at the completion \
-                of their habits. If users are struggling, you will prompt them maybe to take another look at their goals, or give them suggestions \
-                to help stay on track."    
-            },
-            {
-            "type": "text",
-            "text": "For example, a user may be on a 5 day streak. You could prompt them maybe to increase the amount of each habit to do, or you might \
-                suggest additional habits."    
-            },
-            {
-            "type": "text",
-            "text": "You're suggestions will be sent either as an email or as a push notification on a webapp."    
-            }
-        ] 
+            "role": "system",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "You are part of a goal-setting and productiveness app. Users enter a long term goal they are struggling to achieve. \
+                        For each goal, they will setup daily/weekly habits they would like to have in order to achieve their goal."    
+                },
+                {
+                    "type": "text",
+                    "text": "Everyday, users will need to fill out a self-reflection log Your task is to look at this log and at the completion \
+                        of their habits. If users are struggling, you will prompt them maybe to take another look at their goals, or give them suggestions \
+                        to help stay on track."    
+                },
+                {
+                    "type": "text",
+                    "text": "For example, a user may be on a 5 day streak. You could prompt them maybe to increase the amount of each habit to do, or you might \
+                        suggest additional habits."    
+                },
+                {
+                    "type": "text",
+                    "text": "You're suggestions will be sent either as an email or as a push notification on a webapp."    
+                }
+            ] 
         }, 
         {
-        "role": "system",
-        "content": [
-            {
-            "type": "text",
-            "text": userInput
-            },
-        ] 
-      }
+            "role": "system",
+            "content": [
+                {
+                    "type": "text",
+                    "text": userInput
+                },
+            ] 
+        }
     ]
   )
   msg = str(completion.choices[0].message.content)

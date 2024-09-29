@@ -12,8 +12,15 @@ def getKey() :
 # Set your SendGrid API key
 sendgrid_api_key = getKey()
 
+# contents = {
+#     'streak': 5,
+#     'goal': 'Finding a job within 3 months',
+#     'habits': ['Apply to 5 jobs a day', 'Research companies for 30 minutes a day', 
+#                'Spend 30 minutes a day fixing resumes, cover letters, etc.']
+# }
+
 contents = {
-    'streak': 5,
+    'streak': -1,
     'goal': 'Finding a job within 3 months',
     'habits': ['Apply to 5 jobs a day', 'Research companies for 30 minutes a day', 
                'Spend 30 minutes a day fixing resumes, cover letters, etc.']
