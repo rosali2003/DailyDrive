@@ -14,7 +14,7 @@ export default function EmailForm() {
     e.preventDefault();
     // save the email to your backend ?
     console.log('Saving email:', email);
-    axios.post('http://localhost:8000/api/users/', { email, first_name: firstName, last_name: lastName }, {headers: {'Content-Type': 'application/json'}});
+    axios.post(`${process.env.SERVER_URL}/api/users/`, { email, first_name: firstName, last_name: lastName }, {headers: {'Content-Type': 'application/json'}});
     // redirect to goals page
     navigate('/goal');
   };

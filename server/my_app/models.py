@@ -30,3 +30,4 @@ class Habits(models.Model):
     interval = models.PositiveIntegerField(default=1)  # Interval between repetitions
     unit = models.CharField(max_length=10, choices=TIME_UNITS, default='day')  # Time unit for the interval
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    goal = models.ForeignKey(Goals, on_delete=models.CASCADE, null=True, blank=True)

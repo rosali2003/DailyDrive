@@ -31,7 +31,7 @@ export default function GoalForm() {
   const [selectedUser, setSelectedUser] = useState<number | null>(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/users/')
+    axios.get(`${process.env.SERVER_URL}/api/users/`)
       .then((response) => {
         setUsers(response.data);
         setSelectedUser(response.data[0].id);
@@ -47,7 +47,7 @@ export default function GoalForm() {
     // In a real app, you would save the goals to your backend here
     console.log('Saving goals:', goals);
     for (const goal of goals ) {
-      axios.post('http://localhost:8000/api/goals/', {
+      axios.post(`${process.env.SERVER_URL}/api/goals/`, {
         title: goal.title,
         completion_date: `${goal.completion_date.toISOString()}`,
         user: selectedUser
