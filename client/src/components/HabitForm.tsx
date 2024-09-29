@@ -83,7 +83,7 @@ export const HabitForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6 max-w-md mx-auto">
       {habits.map((habit) => (
         <div key={habit.id} className="flex items-center space-x-4">
           <Checkbox id={`habit-${habit.id}`} />
