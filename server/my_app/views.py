@@ -3,8 +3,8 @@ from rest_framework import viewsets
 from rest_framework.response import Response 
 from rest_framework.views import APIView
 from rest_framework import status 
-from .models import Habits 
-from .serializers import HabitsSerializer, InputDataSerializer
+from .models import Habits, Goals, User
+from .serializers import HabitsSerializer, GoalSerializer, UserSerializer, InputDataSerializer
 from .emailReminder import sendEmailReminder
 
 class HabitsViewSet(viewsets.ModelViewSet):
@@ -40,3 +40,12 @@ class EmailReminderView(APIView):
             result = "Successfully Sent Email"
             return Response(result, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class GoalsViewSet(viewsets.ModelViewSet):
+    queryset = Goals.objects.all()
+    serializer_class = GoalSerializer
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

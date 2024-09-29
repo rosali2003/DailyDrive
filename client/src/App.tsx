@@ -1,10 +1,13 @@
+
+import React from 'react';
+import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import EmailForm from './components/EmailForm';
 import GoalForm from './components/GoalForm';
 import { HabitForm } from './components/HabitForm';
 import ReflectionForm from './components/Reflection'
-import './App.css';
+
 import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './components/ui/card'; 
 import { Button, buttonVariants } from './components/ui/button';
 import { Input } from './components/ui/input';
@@ -13,7 +16,7 @@ import { Checkbox } from './components/ui/checkbox';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App h-full bg-color">
       <Router>
         <div className="App">
           <header className="App-header">
