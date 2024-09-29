@@ -88,24 +88,28 @@ export const HabitForm = () => {
         <div key={habit.id} className="flex items-center space-x-4">
           <Checkbox id={`habit-${habit.id}`} />
           <Input
+            className="custom-input"
             placeholder="Enter a daily habit title"
             value={habit.title}
             onChange={(e) => updateHabit(habit.id, 'title', e.target.value)}
             required
           />
           <Input
+            className="custom-input"
             placeholder="Enter a description"
             value={habit.description}
             onChange={(e) => updateHabit(habit.id, 'description', e.target.value)}
             required
           />
           <Input
+            className="custom-input"
             placeholder="Enter a recurrence"
             value={habit.recurrence}
             onChange={(e) => updateHabit(habit.id, 'recurrence', e.target.value)}
             required
           />
           <Input
+            className="custom-input"
             placeholder="Enter a frequency"
             value={habit.frequency}
             onChange={(e) => updateHabit(habit.id, 'frequency', Number(e.target.value))}
@@ -113,12 +117,14 @@ export const HabitForm = () => {
             required
           />
           <Input
+            className="custom-input"
             placeholder="Enter a unit"
             value={habit.unit}
             onChange={(e) => updateHabit(habit.id, 'unit', e.target.value)}
             required
           />
           <Input
+            className="custom-input"
             placeholder="Enter an interval"
             value={habit.interval}
             onChange={(e) => updateHabit(habit.id, 'interval', Number(e.target.value))}

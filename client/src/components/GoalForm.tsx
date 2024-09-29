@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
+import { PlusIcon, TrashIcon } from 'lucide-react';
 
 // Define the Goal type
 type Goal = {
@@ -31,14 +32,15 @@ export default function GoalForm() {
     // In a real app, you would save the goals to your backend here
     console.log('Saving goals:', goals);
     // Redirect to the habits page
-    navigate('/habits');
+    navigate('/habit');
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6 max-w-md mx-auto">
       {goals.map((goal) => (
         <div key={goal.id} className="flex items-center space-x-4">
           <Input
+            className="custom-input"
             placeholder="Enter your goal"
             value={goal.description}
             onChange={(e) => updateGoal(goal.id, 'description', e.target.value)}
@@ -51,10 +53,12 @@ export default function GoalForm() {
             required
           />
           <Button type="button" variant="ghost" onClick={() => removeGoal(goal.id)}>
+            <TrashIcon className="h-5 w-5" />
           </Button>
         </div>
       ))}
       <Button type="button" onClick={addGoal} variant="outline" className="w-full">
+        <PlusIcon className="h-5 w-5 mr-2" /> Add Another Goal
       </Button>
       <Button type="submit" className="w-full">
         Set Daily Habits

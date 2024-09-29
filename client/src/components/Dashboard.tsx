@@ -26,7 +26,7 @@ export default function Dashboard() {
     // In a real app, you would fetch goals and habits from your backend here
     setGoals([
       { id: 1, description: 'Apply for 5 jobs a day', targetDate: '2023-12-31', progress: 60 },
-      { id: 2, description: 'Learn a new programming language', targetDate: '2024-06-30', progress: 30 },
+      { id: 2, description: 'Learn Java', targetDate: '2024-06-30', progress: 30 },
     ]);
     setHabits([
       { id: 1, description: 'Update resume', completed: false },
@@ -42,7 +42,7 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-6">
-      <Card>
+      <Card className="max-w-md mx-auto">
         <CardHeader>
           <CardTitle>Your Goals</CardTitle>
         </CardHeader>
@@ -50,7 +50,7 @@ export default function Dashboard() {
           {goals.map(goal => (
             <div key={goal.id} className="mb-4">
               <div className="flex justify-between items-center mb-2">
-                <span>{goal.description}</span>
+                <span className="goal-description">{goal.description}</span>
                 <span className="text-sm text-gray-500">Target: {goal.targetDate}</span>
               </div>
               <Progress value={goal.progress} className="w-full" />
@@ -62,7 +62,7 @@ export default function Dashboard() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="max-w-md mx-auto">
         <CardHeader>
           <CardTitle>Today's Habits</CardTitle>
         </CardHeader>
@@ -80,7 +80,7 @@ export default function Dashboard() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="max-w-md mx-auto">
         <CardHeader>
           <CardTitle>Daily Reflection</CardTitle>
         </CardHeader>
