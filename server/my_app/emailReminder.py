@@ -2,15 +2,15 @@ import os
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
-from sampleApiUsage import getMessage
+from .reflectionAI import getMessage
 
 def getKey() :
-    with open('email_key.txt') as f:
+    with open('../../email_key.txt') as f:
         # Read the contents of the file into a variable
         return f.read()
 
 # Set your SendGrid API key
-sendgrid_api_key = getKey()
+#sendgrid_api_key = getKey()
 
 # contents = {
 #     'streak': 5,

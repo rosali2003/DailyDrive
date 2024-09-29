@@ -83,8 +83,8 @@ DATABASES = {
 'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'dailydrive',
-        'USER': 'rosali',
-        'PASSWORD': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'Hk@7889348303',
         'HOST': 'localhost',
         'PORT': '5432',
     }

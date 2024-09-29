@@ -12,3 +12,9 @@ class HabitsSerializer(serializers.ModelSerializer):
         model = Habits 
         fields = '__all__'
         list_serializer_class = HabitListSerializer
+
+class InputDataSerializer(serializers.Serializer):
+    reflection = serializers.CharField(max_length=1000)
+    streak = serializers.IntegerField
+    goal = serializers.CharField(max_length=200)
+    habits = serializers.ListField

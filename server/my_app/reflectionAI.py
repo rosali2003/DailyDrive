@@ -1,7 +1,7 @@
 from openai import OpenAI
 
 def getKey() :
-    with open('api_key.txt') as f:
+    with open('../api_key.txt') as f:
         # Read the contents of the file into a variable
         return f.read()
 
