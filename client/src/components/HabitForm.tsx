@@ -41,12 +41,12 @@ export const HabitForm = () => {
   const [goals, setGoals] = useState<any[]>([]);
 
   useEffect(() => {
-    axios.get(`${process.env.SERVER_URL}/api/users/`).then((response) => {
+    axios.get(`${serverUrl}/api/users/`).then((response) => {
       setUsers(response.data);
       setSelectedUser(response.data[0].id);
     });
 
-    axios.get(`${process.env.SERVER_URL}/api/goals/`).then((response) => {
+    axios.get(`${serverUrl}/api/goals/`).then((response) => {
       setGoals(response.data);
       setSelectedGoal(response.data[0].id);
     });

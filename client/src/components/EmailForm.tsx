@@ -9,12 +9,12 @@ export default function EmailForm() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const navigate = useNavigate();
-
+  const serverURL = process.env.SERVER_URL || 'http://localhost:8000';
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // save the email to your backend ?
     console.log('Saving email:', email);
-    axios.post(`${process.env.SERVER_URL}/api/users/`, { email, first_name: firstName, last_name: lastName }, {headers: {'Content-Type': 'application/json'}});
+    axios.post(`${serverURL}/api/users/`, { email, first_name: firstName, last_name: lastName }, {headers: {'Content-Type': 'application/json'}});
     // redirect to goals page
     navigate('/goal');
   };
