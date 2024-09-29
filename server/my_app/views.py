@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response 
 from rest_framework import status 
-from .models import Habits 
-from .serializers import HabitsSerializer
+from .models import Habits, Goals, User
+from .serializers import HabitsSerializer, GoalSerializer, UserSerializer
 
 class HabitsViewSet(viewsets.ModelViewSet):
     queryset = Habits.objects.all()
@@ -21,8 +21,13 @@ class HabitsViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def perform_create(self, serializer):
-<<<<<<< HEAD
         serializer.save()
-=======
-        serializer.save()
->>>>>>> 0f8fd63 (django set up complete and bulk add habits)
+
+class GoalsViewSet(viewsets.ModelViewSet):
+    queryset = Goals.objects.all()
+    serializer_class = GoalSerializer
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
